@@ -32,7 +32,7 @@ const InputsFormLogin = ({
             {label}
           </label> */}
           <Field
-            className=" w-full pl-[1rem] text-[0.9rem]  font-extrabold  border  rounded-md outline-none h-[3rem] "
+            className={` ${touched[name] ? "border-red-600 ": "" }  w-full pl-[1rem] text-[0.9rem] font-extrabold  border rounded-md outline-none h-[3rem]`}
             {...fieldProps(name)}
             type={type}
             name={name}
@@ -40,7 +40,7 @@ const InputsFormLogin = ({
             placeholder={textPlaceHolder}
           />
           {touched[name] && errors[name] && (
-            <div className=" text-rose-600/50 font-semibold ">
+            <div className=" text-red-700/80 font-semibold ">
               {errors[name]}
             </div>
           )}

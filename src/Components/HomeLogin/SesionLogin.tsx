@@ -2,7 +2,6 @@ import { Form, Formik } from "formik";
 import InputsFormLogin from "./Input/InputsLogin";
 import { initialValueLogin } from "./InitialValues";
 import { LoginValidationSchema } from "../../Validations/ValidationLoginHome";
-
 import stateAuthLogin from "../../StatesGlobals/LoginHome/StateGlobalLoginHome";
 
 const SesionLogin = () => {

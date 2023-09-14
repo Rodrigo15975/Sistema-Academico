@@ -7,19 +7,20 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
-  theme: {
-    extend: {
+  theme: {   
+    extend: {      
       textColor:{
-        textHomeLogin: "#0C89B0"
+        textHomeLogin: "#0C89B0",
+        colorGreen: "#83ffdf"
       },
       backgroundColor:{
-        bgBackGroundLogin: "#0C89B0"
+        bgBackGroundLogin: "#0C89B0",
+        bgGreen: "#83ffdf"
       },
       fontFamily:{
-        titleFontLogin: "Concert One, cursive",
+        titleFontLogin: "'Concert One', 'cursive'",
         textFontLogin: "Amaranth, sans-serif"
-      }
-      
+      }      
     },
   },
   plugins: [

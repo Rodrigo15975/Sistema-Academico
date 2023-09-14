@@ -3,14 +3,23 @@ import InputsFormLogin from "./Input/InputsLogin";
 import { initialValueLogin } from "./InitialValues";
 import { LoginValidationSchema } from "../../Validations/ValidationLoginHome";
 import stateAuthLogin from "../../StatesGlobals/LoginHome/StateGlobalLoginHome";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const SesionLogin = () => {
-  const { prueba } = stateAuthLogin();
+const SesionLogin = () => {  
+  const navigate = useNavigate();
+  //Auth
+  const { authProfesor, loginProfesor, renderNavigate} = stateAuthLogin();
+
+  useEffect(() => {
+    renderNavigate(navigate)
+    authProfesor();       
+  }, [authProfesor, navigate,renderNavigate]);
 
   return (
     <>
       <Formik
-        onSubmit={prueba}
+        onSubmit={loginProfesor}
         initialValues={initialValueLogin}
         validationSchema={LoginValidationSchema}
       >
@@ -44,11 +53,11 @@ const SesionLogin = () => {
             <div className="flex flex-col gap-2 mt-[3rem]">
               <button
                 type="submit"
-                className="bg-blue-300  hover:text-white  text-black/90  rounded-md shadow-lg hover:shadow-none transition font-extrabold font-titleFontLogin p-3"
+                className="bg-[#0C89B0] hover:text-white text-black/90 rounded-md shadow-lg hover:shadow-none transition font-extrabold font-titleFontLogin p-3"
               >
                 Sign in
               </button>
-              <div className="flex justify-end text-[#222121]/70 hover:text-rose-500  cursor-pointer underline mt-[1rem]   font-medium">
+              <div className="flex justify-end text-[#222121]/70 hover:text-rose-500 cursor-pointer underline mt-[1rem] font-medium">
                 <p>Olvidaste la contraseña?</p>
               </div>
             </div>

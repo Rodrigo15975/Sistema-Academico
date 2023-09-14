@@ -32,11 +32,12 @@ const InputsFormLogin = ({
             {label}
           </label> */}
           <Field
-            className={` ${touched[name] ? "border-red-600 ": "" }  w-full pl-[1rem] text-[0.9rem] font-extrabold  border rounded-md outline-none h-[3rem]`}
+            className={` w-full pl-[1rem] text-[0.9rem]  border rounded-md outline-none h-[3rem]`}
             {...fieldProps(name)}
             type={type}
             name={name}
             id={name}
+            autoComplete=""
             placeholder={textPlaceHolder}
           />
           {touched[name] && errors[name] && (

@@ -3,6 +3,9 @@ body{
   font-family: 'Amaranth', sans-serif;
 }
 .active{
-  background-color: rgba(185, 185, 185, 0.39);
-  color: #fff;
+  background-color: rgba(255, 255, 255);
+  color: #0c0c0c;
+}
+.bg-login{
+  background: linear-gradient(180deg, #FFFAEC 0%, #EEF5FF 100%);
 }

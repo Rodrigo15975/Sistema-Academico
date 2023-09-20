@@ -1,5 +1,4 @@
 import "./IsLoadingValidationCredentials.css";
-
 const IsLoadingValidationCredentials = () => {
   return (
     <div className="fixed h-full w-full flex justify-center items-center backdrop-blur-md " >

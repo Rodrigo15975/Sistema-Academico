@@ -1,5 +1,4 @@
 import { GoIssueClosed } from "react-icons/go";
-
 interface PropsModal {
   textTitle: string;
   primerParrafo: string;
@@ -7,7 +6,6 @@ interface PropsModal {
   tercerParrafo?: string
   closeModal: () => void
 }
-
 const ModalErrorsLogin = ({
   textTitle,
   primerParrafo,
@@ -33,7 +31,6 @@ const ModalErrorsLogin = ({
               {tercerParrafo}
             </li>
           }
-
         </ul>
         <button
           className=" hover:scale-105 transition absolute flex items-center text-3xl text-white font-extrabold justify-center -top-2 -right-2 rounded-md z-10 bg-green-400 h-[2.5rem] w-[2.5rem] "

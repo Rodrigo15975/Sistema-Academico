@@ -9,3 +9,9 @@ body{
 .bg-login{
   background: linear-gradient(180deg, #FFFAEC 0%, #EEF5FF 100%);
 }
+.bg-login-home{
+  background: radial-gradient(circle at top,transparent 14%, #f2f2f2 15% ,#f2f2f2 19% , transparent 20%) , radial-gradient(circle at bottom,transparent 14%, #f2f2f2 15% ,#f2f2f2 19% , transparent 20%), radial-gradient(circle at right,transparent 14%, #f2f2f2 15% ,#f2f2f2 19% , transparent 20%) , radial-gradient(circle at left,transparent 14%, #f2f2f2 15% ,#f2f2f2 19% , transparent 20%), radial-gradient(circle at center,#f2f2f2 25% , transparent 26%), radial-gradient(circle at bottom left, #f2f2f2 12%, transparent 13%),radial-gradient(circle at bottom right, #f2f2f2 12%, transparent 13%),radial-gradient(circle at top left, #f2f2f2 12%, transparent 13%),radial-gradient(circle at top right, #f2f2f2 12%, transparent 13%);
+  background-size: 3em 3em;
+  background-color: #ffffff;
+  opacity: 1
+}

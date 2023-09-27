@@ -15,52 +15,40 @@ type DataRutas = {
 const rutaProfesores: DataRutas[] = [
   {
     id: "1",
-    path: "/dashboard",
+    path: "/dashboard-admin",
     name: "Dashboard",
     icon: <RxDashboard className="  text-2xl" />,
   },
   {
     id: "2",
-    path: "/gestionProfesores",
+    path: "/dashboard/admin/gestionProfesores",
     name: "Gestión de Profesores",
     icon: <SiGoogleclassroom className="  text-2xl" />,
   },
   {
     id: "3",
-    path: "/gestionEstudiantes",
+    path: "/dashboard/admin/gestionEstudiantes",
     name: "Gestión de Estudiantes",
     icon: <HiOutlineUsers className="  text-2xl" />,
   },
   {
     id: "4",
-    path: "/perfilAdmin",
+    path: "/dashboard/admin/perfil",
     name: "Perfil",
     icon: <FaUserGraduate className="  text-2xl" />,
   },
   {
     id: "5",
-    path: "/institucionAdmin",
+    path: "/dashboard/admin/institucion",
     name: "Institución",
     icon: <LiaUniversitySolid className="  text-2xl" />,
   },
   {
     id: "6",
-    path: "/reportes",
+    path: "/dashboard/admin/reporte",
     name: "Reporte",
     icon: <GoReport className="  text-2xl" />,
   },
-  // {
-  //   id: "6",
-  //   path: "/listadoAlumnos",
-  //   name: "Lista de Alumnos",
-  //   icon: <SiGoogleclassroom className="  text-2xl" />,
-  // },
-  // {
-  //   id: "7",
-  //   path: "/listadoProfesores",
-  //   name: "Lista de Profesores",
-  //   icon: <SiGoogleclassroom className="  text-2xl" />,
-  // },
 ]
 
 const LinksSiderBarAdmin = () => {
@@ -69,13 +57,12 @@ const LinksSiderBarAdmin = () => {
       <p className="text-colorGreen" >Menu</p>
       {rutaProfesores.map(links =>
         <NavLink
-          className={`p-2 gap-1 hover:outline-double mt-2 font-thin hover:bg-white/10 rounded-md transition flex items-center hover:text-white`}
+          className={`p-2 gap-1 hover:outline-double mt-2 font-thin hover:bg-white rounded-md transition flex items-center`}
           key={`ruta-${links.id}`}
           to={links.path} >
           {links.icon} {links.name}
         </NavLink>
-      )
-      }
+      )}
     </div>
   )
 }

@@ -2,23 +2,22 @@ import { Form, Formik } from "formik";
 import InputsFormLogin from "./Input/InputsLogin";
 import { initialValueLogin } from "./InitialValues";
 import { LoginValidationSchema } from "./Validations/ValidationLoginHome";
-import stateAuthLogin from "../../StatesGlobals/LoginHome/StateGlobalLoginHome";
+import stateAuthLogin from "../../StatesGlobals/StateGlobalsLoginHome/StateGlobalLoginHome";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const SesionLogin = () => {
-
   const navigate = useNavigate();
   //Auth
-  const { authProfesor, loginProfesor, renderNavigate } = stateAuthLogin();
+  const { authUser, loginUser, renderNavigate } = stateAuthLogin();
   useEffect(() => {
     renderNavigate(navigate)
-    authProfesor();
-  }, [authProfesor, navigate, renderNavigate]);
+    authUser()
+  }, [authUser, navigate, renderNavigate]);
 
   return (
     <>
       <Formik
-        onSubmit={loginProfesor}
+        onSubmit={loginUser}
         initialValues={initialValueLogin}
         validationSchema={LoginValidationSchema}
       >
@@ -34,8 +33,7 @@ const SesionLogin = () => {
                 fieldProps={getFieldProps}
                 type="email"
                 errors={errors}
-                touched={touched}
-                className=""
+                touched={touched}                
                 textPlaceHolder="Email@hotmail.com"
               />
               <InputsFormLogin
@@ -44,8 +42,7 @@ const SesionLogin = () => {
                 fieldProps={getFieldProps}
                 type="password"
                 errors={errors}
-                touched={touched}
-                className=""
+                touched={touched}        
                 textPlaceHolder="*******"
               />
             </div>

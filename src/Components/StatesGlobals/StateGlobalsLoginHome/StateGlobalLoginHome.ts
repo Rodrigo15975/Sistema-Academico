@@ -1,11 +1,13 @@
 import { create } from "zustand";
 import DataLogin from "../../Interfaces/InterfacesLoginHome";
 import { AuthLoginHome, ProfeAuthData } from "./InterfaceStateGlobalLoginHome";
-import { auth,  onAuthStateChanged,signInWithEmailAndPassword,signOut} from "../../../firebase/Config/auth";
-import { collection,dbFire,getDocs,query,where } from "../../../firebase/Config/firestore";
-import { disableAcount, errorPassword, profesorNotFound } from "../../Principales/HomeLogin/Hooks/LoginErrors/FunctionsErrosLogin";
+import {  auth,  onAuthStateChanged,  signInWithEmailAndPassword,  signOut,
+} from "../../../firebase/Config/auth";
+import {  collection,  dbFire,  getDocs,  query,  where,} from "../../../firebase/Config/firestore";
+import {  disableAcount,  errorPassword,  profesorNotFound,} from "../../Principales/HomeLogin/Hooks/LoginErrors/FunctionsErrosLogin";
 const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
   profesorAuthData: null,
+  adminAuthData: null,
   validationCredentials: false,
   passwordIncorrect: false,
   accountDisable: false,
@@ -14,22 +16,34 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
   navigate: () => {},
   isAuthLoading: true,
   //funcion para verificar y mantener el auth
-  authProfesor() {
+  authUser() {
     set({ isAuthLoading: true });
-    const { navigate, getProfesorProfile } = get();
-    onAuthStateChanged(auth, async (authProfesor) => {
-      if (authProfesor) {
-        const dataProfesor = await getProfesorProfile(authProfesor.uid);
-        set({ profesorAuthData: dataProfesor, validationCredentials: false }); //Pasar el validation a false, una vez validado
-        navigate("/dashboard");
-      } else {
-        // Si no hay autenticacion, establecer isAuthLoading en false
-        set({ isAuthLoading: false });
+    const { getUserProfile, renderPage } = get();
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      try {
+        if (user) {
+          const { uid } = user;
+          const dataUser = await getUserProfile(uid);
+          renderPage(dataUser);
+          unsubscribe();
+        } else set({ isAuthLoading: false });
+      } catch (error) {
+        console.log(error);
       }
     });
   },
-  //Funcion para obtener los datos del profesor
-  async getProfesorProfile(uid) {
+  renderPage(data) {
+    set({ validationCredentials: false, isAuthLoading: false });
+    const { navigate } = get();
+    if (data) {
+      const { role } = data;
+      return role === "admin"
+        ? (navigate("/dashboard-admin"), set({ adminAuthData: data }))
+        : (navigate("/dashboard-profesor"), set({ profesorAuthData: data }));
+    }
+  },
+  //Funcion para obtener los datos del use = admin | profesor
+  async getUserProfile(uid) {
     //referencia de la collecionProfesores
     const dbProfes = collection(dbFire, "profesores");
     //query consultara(filtrara) en path/profesor  y mostrara el doc coincidente
@@ -45,7 +59,7 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
     return null;
   },
   //Funcion para ingresar al dashboard
-  async loginProfesor(data: DataLogin) {
+  async loginUser(data: DataLogin) {
     set({ validationCredentials: true });
     try {
       const { email, password } = data;
@@ -60,7 +74,7 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
       set({ validationCredentials: false });
     }
   },
-  async logoutProfesor() {
+  async logoutUser() {
     const { navigate } = get();
     window.location.reload();
     //Establecer en nulo la informacion del usuario logueado

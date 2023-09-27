@@ -1,6 +1,5 @@
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
 import ProfileAdmin from "./Profile/ProfileAdmin"
-
 const DashBoardAdmin = () => {
   return (
     <section className="flex w-full flex-col">

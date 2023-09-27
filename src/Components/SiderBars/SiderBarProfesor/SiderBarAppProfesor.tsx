@@ -1,9 +1,9 @@
 import { BiLogOut } from "react-icons/bi"
 import SiderBarProfesor from "./SiderBarProfesor"
-import stateAuthLogin from "../../StatesGlobals/LoginHome/StateGlobalLoginHome"
+import stateAuthLogin from "../../StatesGlobals/StateGlobalsLoginHome/StateGlobalLoginHome"
 import ProfileProfesor from "../../Principales/DashBoardMain/Profesor/Profile/ProfileProfesor"
 const SiderBarAppProfesor = () => {
-  const { logoutProfesor } = stateAuthLogin()
+  const { logoutUser } = stateAuthLogin()
   return (
     <>
       <div className=" flex flex-col justify-between  gap-3 py-4  flex-[0_0_18.125rem] min-h-[100vh] bg-[#1E1B1B] " >
@@ -14,7 +14,7 @@ const SiderBarAppProfesor = () => {
           <SiderBarProfesor />
         </div>
         <div className="flex-[0_1_3rem] mt-4 p-2  " >
-          <button onClick={logoutProfesor} className="bg-bgGreen flex items-center  hover:text-white transition hover:bg-blue-600  justify-center  w-full min-h-[2.5rem] text-1xl rounded-3xl ">
+          <button onClick={logoutUser} className="bg-bgGreen flex items-center  hover:text-white transition hover:bg-blue-600  justify-center  w-full min-h-[2.5rem] text-1xl rounded-3xl ">
             <BiLogOut className="mr-2 text-3xl   " />Cerrar Sesión
           </button>
         </div>

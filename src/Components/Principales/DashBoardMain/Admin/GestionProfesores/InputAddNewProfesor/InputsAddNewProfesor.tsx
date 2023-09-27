@@ -1,7 +1,7 @@
 import { Field } from "formik";
-import { PropsInputsFormLogin } from "./InterfacesInputs";
+import { PropsInputsAddNewProfesor } from "./InterfacesInputs";
 
-const InputsFormLogin = ({
+const InputsAddNewProfesor = ({
   fieldProps,
   touched,
   errors,
@@ -9,7 +9,7 @@ const InputsFormLogin = ({
   name,
   className,
   textPlaceHolder
-}: PropsInputsFormLogin) => {
+}: PropsInputsAddNewProfesor) => {
   //Funcion que válida el campo de los inputs
   const getFieldClass = (
     touched: { [key: string]: boolean },
@@ -37,6 +37,7 @@ const InputsFormLogin = ({
             type={type}
             name={name}
             id={name}
+            autoComplete=""
             placeholder={textPlaceHolder}
           />
           {touched[name] && errors[name] && (
@@ -50,4 +51,4 @@ const InputsFormLogin = ({
   );
 };
 
-export default InputsFormLogin;
+export default InputsAddNewProfesor;

@@ -2,34 +2,32 @@ import { Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 // PageProfesores
 import LayoutProfesor from "../Components/Layout/LayoutProfesor";
-import { PageAulasProfesor, PageDashBoardProfesor, PageInstitucionProfesor, PagePerfilProfesor } from "../Components/Pages/PageProfesores/exportPagesProfesores";
+import { PageAulasProfesor, PageDashBoardProfesor, PageInstitucionProfesor, PagePerfilProfesor } from "../Components/Pages/Dashboard/Profesor/exportPagesProfesores";
 //-------
-import { PageDashBoard, PageHome, } from "../Components/Pages/ExportPages";
+import { PageHome, } from "../Components/Pages/ExportPages";
 // PageAdminds
-import { PageAdminPerfil, PageDashBoardAdmin, PageGestionEstudiantes, PageInstitucionAdmin, PageGestionProfesores } from "../Components/Pages/PagesAdmin/ExportPagesAdmin";
+import { PageAdminPerfil, PageDashBoardAdmin, PageGestionEstudiantes, PageInstitucionAdmin, PageGestionProfesores, PageReporte } from "../Components/Pages/Dashboard/Admin/ExportPagesAdmin";
 import LayoutAdmin from "../Components/Layout/LayoutAdmin";
 //------
-import stateAuthLogin from "../Components/StatesGlobals/LoginHome/StateGlobalLoginHome";
+import stateAuthLogin from "../Components/StatesGlobals/StateGlobalsLoginHome/StateGlobalLoginHome";
 const Router = () => {
-  const { profesorAuthData } = stateAuthLogin();
+  const { profesorAuthData, adminAuthData } = stateAuthLogin();
   return (
     <Routes>
       {/* Page Principal */}
       <Route path="/" element={<PageHome />} />
-      <Route path="/dashboard" element={profesorAuthData ? (<PageDashBoard />) : (<Navigate to={"/"} replace={true} />)} />
       {/*Profesores  */}
-      <Route path="/dashboard" element={profesorAuthData ? <LayoutProfesor><PageDashBoardProfesor/></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
-      <Route path="/institucionProf" element={profesorAuthData ? <LayoutProfesor><PageInstitucionProfesor /></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
-      <Route path="/perfilProf" element={profesorAuthData ? <LayoutProfesor><PagePerfilProfesor /></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
-      <Route path="/aulasProf" element={profesorAuthData ? <LayoutProfesor> <PageAulasProfesor /></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
+      <Route path="/dashboard-profesor" element={profesorAuthData ? <LayoutProfesor><PageDashBoardProfesor /></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
+      <Route path="/dashboard/profesor/institucion" element={profesorAuthData ? <LayoutProfesor><PageInstitucionProfesor /></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
+      <Route path="/dashboard/profesor/perfil" element={profesorAuthData ? <LayoutProfesor><PagePerfilProfesor /></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
+      <Route path="/dashboard/profesor/aulas" element={profesorAuthData ? <LayoutProfesor> <PageAulasProfesor /></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
       {/*Admins  */}
-      <Route path="/dashboard" element={profesorAuthData ? <LayoutAdmin> <PageDashBoardAdmin /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
-      <Route path="/perfilAdmin" element={profesorAuthData ? <LayoutAdmin> <PageAdminPerfil /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
-      <Route path="/institucionAdmin" element={profesorAuthData ? <LayoutAdmin><PageInstitucionAdmin /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
-      <Route path="/gestionEstudiantes" element={profesorAuthData ? <LayoutAdmin> <PageGestionEstudiantes /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
-      <Route path="/gestionProfesores" element={profesorAuthData ? <LayoutAdmin> <PageGestionProfesores /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
-      {/* <Route path="/listadoProfesores" element={profesorAuthData ? <LayoutAdmin> <PageListadoDeProfesores /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} /> */}
-      {/* <Route path="/listadoAlumnos" element={profesorAuthData ? <LayoutAdmin> <PageListadoDeAlumnos /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} /> */}
+      <Route path="/dashboard-admin" element={adminAuthData ? <LayoutAdmin> <PageDashBoardAdmin /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
+      <Route path="/dashboard/admin/perfil" element={adminAuthData ? <LayoutAdmin> <PageAdminPerfil /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
+      <Route path="/dashboard/admin/institucion" element={adminAuthData ? <LayoutAdmin><PageInstitucionAdmin /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
+      <Route path="/dashboard/admin/gestionEstudiantes" element={adminAuthData ? <LayoutAdmin> <PageGestionEstudiantes /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
+      <Route path="/dashboard/admin/gestionProfesores" element={adminAuthData ? <LayoutAdmin> <PageGestionProfesores /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
+      <Route path="/dashboard/admin/reporte" element={adminAuthData ? <LayoutAdmin> <PageReporte /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
       <Route path="*" element={<h2>Te perdiste?</h2>} />
     </Routes>
   );

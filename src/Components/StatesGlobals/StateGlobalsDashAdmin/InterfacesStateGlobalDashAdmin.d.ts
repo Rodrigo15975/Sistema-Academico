@@ -1,0 +1,3 @@
+interface StatePanelNewProfesor {
+  prueba: ()=> void
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
 import EditProfileModal from "./EditProfileModal";
-import stateAuthLogin from "../../../../StatesGlobals/LoginHome/StateGlobalLoginHome";
+import stateAuthLogin from "../../../../StatesGlobals/StateGlobalsLoginHome/StateGlobalLoginHome";
 import { Avatar } from "@nextui-org/avatar";
 
 const ProfileProfesor = () => {

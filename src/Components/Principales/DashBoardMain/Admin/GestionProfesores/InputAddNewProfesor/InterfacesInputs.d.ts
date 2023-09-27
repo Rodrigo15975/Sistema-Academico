@@ -1,4 +1,4 @@
-export interface PropsInputsFormLogin {
+export interface PropsInputsAddNewProfesor{
   // Función que devuelve propiedades específicas del campo según su name( tipo indentificador)
   fieldProps: (name: string) => {
     onChange: (e: React.ChangeEvent) => void; // Función que maneja el evento onChange del campo

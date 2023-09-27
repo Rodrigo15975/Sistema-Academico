@@ -14,8 +14,8 @@ const ModalErrorsLogin = ({
   closeModal
 }: PropsModal) => {
   return (
-    <div className=" p-2 fixed  inset-0 z-10 backdrop-blur-md flex justify-center items-center">
-      <div className=" p-4 relative bg-white shadow-2xl rounded-lg flex-[0_1_25em] min-h-[10rem]">
+    <div className="p-2 fixed inset-0 z-10 backdrop-blur-md flex justify-center items-center">
+      <div className="p-4 relative bg-white shadow-2xl rounded-lg flex-[0_1_25em] min-h-[10rem]">
         <p className=" text-rose-700 font-extrabold font-titleFontLogin text-3xl">
           {textTitle}
         </p>

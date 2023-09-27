@@ -1,6 +1,6 @@
 import DataLogin from "../../Interfaces/InterfacesLoginHome";
 import { NavigateFunction } from "react-router-dom";
-
+//Mismo informacion para el profesor y administrador
 type ProfeAuthData = {
   readonly uid: string;
   name: string;
@@ -19,16 +19,19 @@ interface LoadingAutentication {
 
 interface AuthLoginHome extends LoadingAutentication {
   profesorAuthData: ProfeAuthData;
-  authProfesor: () => void;
+  adminAuthData: ProfeAuthData;
+  authUser: () => void;
   //Data recibe los datos del login
-  loginProfesor: (data: DataLogin) => void;
-  logoutProfesor: () => void;
+  loginUser: (data: DataLogin) => void;
+  logoutUser: () => void;
   //Funcion para actualizar el navigate
   renderNavigate: (navigate: NavigateFunction) => void;
   //navigate para usar la api react-router-dom
   navigate: NavigateFunction;
+  //Recibira los datos dependiendo del role y renderizara
+  renderPage: (data: ProfeAuthData | undefined) => void;
   //Obtener el perfil del profesor
-  getProfesorProfile: (uid: string) => Promise<ProfeAuthData | undefined>;
+  getUserProfile: (uid: string) => Promise<ProfeAuthData | undefined>;
   closeModalPasswordIncorrect: () => void;
   closeModalProfesorNotFound: () => void;
   closeModalAccountDisable: () => void;

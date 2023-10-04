@@ -1,7 +1,7 @@
 import LinksSiderBarAdmin from "./LinksSiderBarAdmin"
 const SiderBarAdmin = () => {
   return (
-    <nav className="flex" >
+    <nav className="flex animate-fade animate-ease-linear" >
       <LinksSiderBarAdmin />
     </nav>
   )

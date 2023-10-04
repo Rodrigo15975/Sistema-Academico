@@ -17,10 +17,10 @@ const EditProfileModalAdmin:React.FC<PropsModal> = ({ updateState }) => {
               Volver
             </Button>
             <div className="flex-[0_1_10rem] w-[10rem] mb-[2rem] " >
-              <Avatar className="h-full w-full bg-white  border " src="" alt="profile" size="lg" />
+              <Avatar className="h-full w-full bg-white border " src="" alt="profile" size="lg" />
             </div>
             <input type="file" className="text-sm" />
-            <Button className="bg-bgGreen mt-4 w-[8rem] hover:bg-white  hover:border"  >
+            <Button className="bg-bgGreen mt-4 w-[8rem] hover:bg-white hover:border"  >
               Subir
             </Button>
           </div>

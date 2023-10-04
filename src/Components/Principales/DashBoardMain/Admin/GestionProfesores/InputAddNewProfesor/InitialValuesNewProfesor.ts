@@ -1,10 +1,9 @@
-import * as Yup from "yup";
-export const initialValuesNewProfesor = {
-  nombre: "",
-  apellido: "",
+export const initialValuesNewProfesor: initialValuesNewProfesor = {
+  email: "",
+  password: "",
+  name: "",
+  apellidos: "",
+  };
+export const initialValueDni = {
+  dni: "",
 };
-
-export const validationNewProfesor = Yup.object({
-  nombre: Yup.string().required("El Nombre es requerido"),
-  apellido: Yup.string().required("El Apellido es requerido"),
-});

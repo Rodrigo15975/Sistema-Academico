@@ -26,6 +26,9 @@
 //     id: "4"
 //   }
 
+import { BsCardChecklist } from "react-icons/bs"
+
+
 const PanelProfesores = () => {
   // const [newPorfesor, setNewPorfesor] = useState();
   // const [backgroundColor, setBackgroundColors] = useState("");
@@ -133,10 +136,11 @@ const PanelProfesores = () => {
 
   return (
     <>
-      <div className="text-center text-xl p-4 bg-white">
-        <p>Lista de Profesores</p>
+      <div className="text-center text-2xl p-4 bg-white shadow-md rounded-md">
+        <p className="flex items-center justify-center gap-2 text-[#2563ebe6] underline" >Lista de Profesores <BsCardChecklist /> </p>
       </div>
-      <div className="border min-h-[40rem] mt-8 shadow-lg px-4 rounded-3xl flex items-center justify-center" >
+      <div className="border border-[#2563ebe6]/30 bg-white min-h-[40rem] mt-8 shadow-lg px-4 rounded-3xl flex items-center justify-center" >
+       
         {/* <button onClick={create} >crear</button> */}
         {/* <div className="h-[15rem] w-[25rem] relative">
             <div className="relative inset-0 h-full w-full">

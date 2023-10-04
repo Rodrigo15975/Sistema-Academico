@@ -6,8 +6,8 @@ const SiderBarAppProfesor = () => {
   const { logoutUser } = stateAuthLogin()
   return (
     <>
-      <div className=" flex flex-col justify-between  gap-3 py-4  flex-[0_0_18.125rem] min-h-[100vh] bg-[#1E1B1B] " >
-        <div className="flex-[0_1_13.5rem] mb-8 border-b pb-4 border-white/30   " >
+      <div className=" flex flex-col justify-between gap-3 py-4 flex-[0_0_18.125rem] min-h-[100vh] bg-[] " >
+        <div className="flex-[0_1_13.5rem] mb-8 border-b pb-4  " >
           <ProfileProfesor />
         </div>
         <div className="flex-[0_1_33.5rem]" >

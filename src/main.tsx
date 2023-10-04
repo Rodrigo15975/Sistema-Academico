@@ -5,6 +5,7 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { NextUIProvider } from "@nextui-org/react";
 import { LazyMotion, domAnimation } from "framer-motion";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>

@@ -4,7 +4,7 @@ interface PropsButton {
   children: React.ReactNode
   styleClass: string
 }
-const Button: React.FC<PropsButton> = ({ clicked, children, styleClass }) => {
+const Button: React.FC<Partial<PropsButton>> = ({ clicked, children, styleClass }) => {
   return (
     <button type="button" onClick={clicked} className={styleClass}  >
       {children}

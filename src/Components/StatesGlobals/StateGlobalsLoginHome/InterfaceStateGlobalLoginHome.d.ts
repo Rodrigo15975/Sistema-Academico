@@ -22,7 +22,7 @@ interface AuthLoginHome extends LoadingAutentication {
   adminAuthData: ProfeAuthData;
   authUser: () => void;
   //Data recibe los datos del login
-  loginUser: (data: DataLogin) => void;
+  loginUser: (data: DataLogin, {resetForm}:{resetForm: ()=> void}) => void;
   logoutUser: () => void;
   //Funcion para actualizar el navigate
   renderNavigate: (navigate: NavigateFunction) => void;
@@ -35,4 +35,5 @@ interface AuthLoginHome extends LoadingAutentication {
   closeModalPasswordIncorrect: () => void;
   closeModalProfesorNotFound: () => void;
   closeModalAccountDisable: () => void;
+
 }

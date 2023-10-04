@@ -1,4 +1,4 @@
-import * as yup from "yup";
+import { yup } from "../../../ImportsDeterminadas/ImportsDeterminadas";
 //EMAIL
 // debe comenzar con uno o mas caracteres alfabeticos
 //  (mayusculas o minusculas), 

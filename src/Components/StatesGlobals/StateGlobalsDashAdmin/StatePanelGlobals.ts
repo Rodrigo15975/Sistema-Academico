@@ -1,10 +1,10 @@
 import { create } from "zustand";
 
-const stateNewProfesor = create<StatePanelNewProfesor>(() => ({
+const stateDashAdmin = create<StatePanelNewProfesor>(() => ({
   prueba() {
     console.log("hola");    
   },
 }));
 
 
-export default stateNewProfesor
+export default stateDashAdmin

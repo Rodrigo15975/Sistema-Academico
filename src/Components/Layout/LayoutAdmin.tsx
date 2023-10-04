@@ -1,6 +1,6 @@
 import SiderBarAppAdmin from "../SiderBars/SiderBarAdmin/SiderBarAppAdmin"
 
-const LayoutAdmin = ({ children }: LayoutAdmin) => {
+const LayoutAdmin = ({ children }: LayoutProps ) => {
   return (
     <main className="flex" >
       <SiderBarAppAdmin />

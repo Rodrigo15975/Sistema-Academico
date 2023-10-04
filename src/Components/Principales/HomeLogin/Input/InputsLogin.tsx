@@ -32,6 +32,7 @@ const InputsFormLogin = ({
             {label}
           </label> */}
           <Field
+            autoComplete=""
             className={` w-full pl-[1rem] text-[0.9rem]  border  rounded-md outline-none h-[3rem]`}
             {...fieldProps(name)}
             type={type}

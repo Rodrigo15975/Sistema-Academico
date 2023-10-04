@@ -1,10 +1,12 @@
 import { create } from "zustand";
 import DataLogin from "../../Interfaces/InterfacesLoginHome";
 import { AuthLoginHome, ProfeAuthData } from "./InterfaceStateGlobalLoginHome";
-import {  auth,  onAuthStateChanged,  signInWithEmailAndPassword,  signOut,
-} from "../../../firebase/Config/auth";
+import {  auth,  onAuthStateChanged,  signInWithEmailAndPassword,  signOut,} from "../../../firebase/Config/auth";
 import {  collection,  dbFire,  getDocs,  query,  where,} from "../../../firebase/Config/firestore";
 import {  disableAcount,  errorPassword,  profesorNotFound,} from "../../Principales/HomeLogin/Hooks/LoginErrors/FunctionsErrosLogin";
+import { renderNavigateRole } from "./HooksRenderNavigate";
+import Roles from "../../Enums/Roles";
+import RutasDeterminadas from "../../Enums/RutasDeterminadas";
 const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
   profesorAuthData: null,
   adminAuthData: null,
@@ -26,9 +28,11 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
           const dataUser = await getUserProfile(uid);
           renderPage(dataUser);
           unsubscribe();
+          set({ isAuthLoading: false });
         } else set({ isAuthLoading: false });
       } catch (error) {
         console.log(error);
+        set({ isAuthLoading: false });
       }
     });
   },
@@ -37,9 +41,10 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
     const { navigate } = get();
     if (data) {
       const { role } = data;
-      return role === "admin"
-        ? (navigate("/dashboard-admin"), set({ adminAuthData: data }))
-        : (navigate("/dashboard-profesor"), set({ profesorAuthData: data }));
+      const renderRole = renderNavigateRole({ navigate, role });
+      if (renderRole === Roles.administrador) (navigate(RutasDeterminadas.admin), set({ adminAuthData: data  })) 
+      else if (renderRole === Roles.profesor) (navigate(RutasDeterminadas.profesor),set({ profesorAuthData: data }))
+      else null
     }
   },
   //Funcion para obtener los datos del use = admin | profesor
@@ -56,14 +61,14 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
       //Que me retorne la información obtenida del doct
       return queryFound;
     }
-    return null;
   },
   //Funcion para ingresar al dashboard
-  async loginUser(data: DataLogin) {
+  async loginUser(data: DataLogin, { resetForm }) {
     set({ validationCredentials: true });
     try {
       const { email, password } = data;
       await signInWithEmailAndPassword(auth, email, password);
+      resetForm();
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);
@@ -75,12 +80,9 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
     }
   },
   async logoutUser() {
-    const { navigate } = get();
-    window.location.reload();
     //Establecer en nulo la informacion del usuario logueado
     await signOut(auth);
-    console.log("Exit complete");
-    navigate("/");
+    location.replace("/");
     return;
   },
   renderNavigate(navigate) {

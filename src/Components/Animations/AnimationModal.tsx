@@ -6,7 +6,7 @@ const AnimationModal: React.FC<Children> = ({ children }) => {
   return (
     <AnimatePresence>
       <m.div
-        className="flex fixed inset-0 justify-center items-center h-full w-full z-50 "
+        className="flex fixed inset-0 justify-center items-center z-50 "
         key={`modal`}
         initial={{ scale: 0, }}
         animate={{ scale: 1, }}

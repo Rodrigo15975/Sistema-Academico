@@ -1,4 +1,4 @@
-export interface PropsInputsAddNewProfesor{
+export interface PropsInputsAddNewProfesor {
   // Función que devuelve propiedades específicas del campo según su name( tipo indentificador)
   fieldProps: (name: string) => {
     onChange: (e: React.ChangeEvent) => void; // Función que maneja el evento onChange del campo
@@ -12,5 +12,7 @@ export interface PropsInputsAddNewProfesor{
   type: string; // Tipo de input, por ejemplo, "text", "password", etc
   name: string; // Nombre único del input.
   className?: string; // Clase CSS que se puede aplicar al input para estilizarlo
-  textPlaceHolder: string
+  textPlaceHolder: string;
+  disabled?: boolean;
+ 
 }

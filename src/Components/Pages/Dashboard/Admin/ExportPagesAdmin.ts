@@ -5,3 +5,5 @@ export { PageGestionEstudiantes as PageGestionEstudiantes } from "./PageGestionE
 export { PageInstitucionAdmin as PageInstitucionAdmin } from "./PageInstitucionAdmin";
 export { PageGestionProfesores as PageGestionProfesores } from "./PageGestionProfesores";
 export { PageReporte as PageReporte } from "./PageReporte";
+export { PageMatriculas as PageMatriculas } from "./PageMatriculas";
+export { PageGestionAuxiliares as PageGestionAuxiliares } from "./PageGestionAuxiliares";

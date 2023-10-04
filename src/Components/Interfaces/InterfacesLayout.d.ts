@@ -1,7 +1,4 @@
-interface LayoutProfesor {
+interface LayoutProps {
   children: React.ReactNode;
 }
 
-interface LayoutAdmin {
-  children: React.ReactNode;
-}

@@ -1,7 +1,11 @@
+import BarChar from "./BarChar";
+
 const PanelAdmin = () => {
+
   return (
-    <div>
-      <h2>Panel</h2>
+    <div className="w-[50%]" >
+      <h1>Gráfico de Barras con Chart.js en React</h1>
+      <BarChar />
     </div>
   )
 }

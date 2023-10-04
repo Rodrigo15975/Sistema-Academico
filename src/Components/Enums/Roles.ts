@@ -1,6 +1,7 @@
 const enum Roles {
-  Profesor = "profesor",
-  Administrador = "admin",
+  profesor = "PROFESOR",
+  administrador = "ADMIN",
+  auxiliar = "AUXILIAR"
 }
 
 export default Roles;

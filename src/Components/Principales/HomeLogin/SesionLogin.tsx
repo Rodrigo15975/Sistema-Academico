@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Form, Formik } from "../../ImportsDeterminadas/ImportsDeterminadas";
 import InputsFormLogin from "./Input/InputsLogin";
 import { initialValueLogin } from "./InitialValues";
 import { LoginValidationSchema } from "./Validations/ValidationLoginHome";
@@ -12,16 +12,18 @@ const SesionLogin = () => {
   useEffect(() => {
     renderNavigate(navigate)
     authUser()
+    InputsFormLogin
   }, [authUser, navigate, renderNavigate]);
 
   return (
     <>
+
       <Formik
         onSubmit={loginUser}
         initialValues={initialValueLogin}
         validationSchema={LoginValidationSchema}
       >
-        {({ errors, touched, getFieldProps }) => (
+        {({ errors, touched, getFieldProps, }) => (
           <Form className="flex-[0_1_23rem]">
             <div className="font-titleFontLogin mb-2 text-2xl">
               <p className="text-[#202020]/90">Login</p>
@@ -33,7 +35,7 @@ const SesionLogin = () => {
                 fieldProps={getFieldProps}
                 type="email"
                 errors={errors}
-                touched={touched}                
+                touched={touched}
                 textPlaceHolder="Email@hotmail.com"
               />
               <InputsFormLogin
@@ -42,7 +44,7 @@ const SesionLogin = () => {
                 fieldProps={getFieldProps}
                 type="password"
                 errors={errors}
-                touched={touched}        
+                touched={touched}
                 textPlaceHolder="*******"
               />
             </div>

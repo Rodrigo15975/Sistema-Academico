@@ -1,6 +1,10 @@
+
 const ListaDeProfesores = () => {
   return (
-    <div>ListaDeProfesores</div>
+    <>
+      <div>ListaDeProfesores</div>
+    
+    </>
   )
 }
 

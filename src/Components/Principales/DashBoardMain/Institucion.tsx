@@ -1,7 +1,12 @@
+import { LiaUniversitySolid } from "react-icons/lia"
+
 const Institucion = () => {
   return (
-    <div className="w-full flex flex-col">
-      <div><h2 className="border p-8 text-2xl shadow-md" >Institución</h2></div>
+    <div className="w-full flex flex-col ">
+      <div>
+        <p className="bg-titleDashboards p-8 flex items-center gap-2 text-2xl shadow-md text-white" >Institución
+          <LiaUniversitySolid />
+        </p></div>
       <div></div>
     </div>
   )

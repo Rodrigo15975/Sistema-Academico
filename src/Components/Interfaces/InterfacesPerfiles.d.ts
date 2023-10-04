@@ -1,6 +1,6 @@
 interface PropsPerfiles {
   name: string;
-  photo: string;
+  photo?: string;
   phone: string;
   role: string;
   gender: string;

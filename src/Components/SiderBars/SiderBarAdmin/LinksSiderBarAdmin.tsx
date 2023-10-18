@@ -19,21 +19,21 @@ const rutaProfesores: DataRutas[] = [
     id: "01",
     path: "/dashboard-admin",
     name: "Dashboard",
-    icon: <RxDashboard />,
+    icon: <RxDashboard className="text-xl" />,
     className: "animate-fade animate-ease-linear"
   },
   {
     id: "02",
     path: "/dashboard/admin/gestionProfesores",
     name: "Gestión Profesores",
-    icon: <SiGoogleclassroom />,
+    icon: <SiGoogleclassroom className="text-xl" />,
     className: "animate-fade animate-delay-200 animate-ease-linear"
   },
   {
     id: "03",
     path: "/dashboard/admin/gestionEstudiantes",
     name: "Gestión Estudiantes",
-    icon: <HiOutlineUsers />,
+    icon: <HiOutlineUsers className="text-xl" />,
     className: "animate-fade animate-delay-300 animate-ease-linear"
   },
   // {
@@ -47,32 +47,31 @@ const rutaProfesores: DataRutas[] = [
     id: "04",
     path: "/dashboard/admin/institucion",
     name: "Institución",
-    icon: <LiaUniversitySolid />,
+    icon: <LiaUniversitySolid className="text-xl" />,
     className: "animate-fade animate-delay-[600ms] animate-ease-linear"
   },
   {
     id: "05",
     path: "/dashboard/admin/reporte",
     name: "Reporte",
-    icon: <GoReport />,
+    icon: <GoReport className="text-xl" />,
     className: "animate-fade animate-delay-[700ms] animate-ease-linear"
   },
   {
     id: "06",
     path: "/dashboard/admin/perfil",
     name: "Perfil",
-    icon: <CgProfile/>,
+    icon: <CgProfile className="text-xl" />,
     className: "animate-fade animate-delay-[500ms] animate-ease-linear"
   },
 ]
 
 const LinksSiderBarAdmin = () => {
   return (
-    <div className="flex flex-col w-full gap-2 overflow-hidden" >
+    <div className="flex flex-col w-full gap-4 mt-2 overflow-hidden px-2 h-full" >
       {rutaProfesores.map(links =>
         <NavLink
-          className={`focus:scale-105 ${links.className} gap-4 h-[3rem] px-2 font-thin transition hover:bg-[#d6ebff] border-b border-[#2386ff] text-[#2386ff] flex items-center`}
-          key={`ruta-${links.id}`}
+          className={`${links.className} gap-3 h-[3rem] pl-4 pr-4 mt-2 transition focus:-translate-y-2 bg-blue-500/50 hover:scale-105 text-white border rounded-full shadow-lg flex items-center`} key={`ruta-${links.id}`}
           to={links.path} >
           {links.icon} {links.name}
         </NavLink>

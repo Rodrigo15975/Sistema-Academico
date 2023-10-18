@@ -23,13 +23,13 @@ const BarChart = () => {
   };
 
   // Opciones para el gráfico
-  const options = {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
-  };
+  // const options = {
+  //   scales: {
+  //     y: {
+  //       beginAtZero: true,
+  //     },
+  //   },
+  // };
 
   return (
     <div className="chart">

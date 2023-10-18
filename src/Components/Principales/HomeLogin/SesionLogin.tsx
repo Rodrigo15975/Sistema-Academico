@@ -37,6 +37,7 @@ const SesionLogin = () => {
                 errors={errors}
                 touched={touched}
                 textPlaceHolder="Email@hotmail.com"
+                className="text-black"
               />
               <InputsFormLogin
                 name="password"
@@ -46,6 +47,7 @@ const SesionLogin = () => {
                 errors={errors}
                 touched={touched}
                 textPlaceHolder="*******"
+                className="text-black"
               />
             </div>
             <div className="flex flex-col gap-2 mt-[3rem]">

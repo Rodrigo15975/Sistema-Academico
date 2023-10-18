@@ -1,18 +1,15 @@
 import { RxDashboard } from "react-icons/rx"
 import PanelAdmin from "./PanelAdmin/PanelAdmin"
-import ProfileAdmin from "./Profile/ProfileAdmin"
-
 
 const DashBoardAdmin = () => {
-
+ 
   return (
-    <section className="flex w-full flex-col">
-      <div className="flex justify-between text-2xl p-8 bg-titleDashboards " >
+    <section className="flex w-full flex-col" >
+      <div className="flex justify-between bg-titleDashboards text-2xl p-8" >
         <p className="flex items-center gap-2 text-white">Dashboard Admin
           <RxDashboard />
         </p>
-        <ProfileAdmin />
-      </div>
+      </div>  
       <div>
         <PanelAdmin />
       </div>

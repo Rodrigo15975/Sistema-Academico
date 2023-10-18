@@ -14,6 +14,7 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
   passwordIncorrect: false,
   accountDisable: false,
   profesorNotFound: false,
+  netWorkFailed: false,
   //lo inicializo en una funcion, navigateFuncion, es una funcion
   navigate: () => {},
   isAuthLoading: true,
@@ -42,25 +43,29 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
     if (data) {
       const { role } = data;
       const renderRole = renderNavigateRole({ navigate, role });
-      if (renderRole === Roles.administrador) (navigate(RutasDeterminadas.admin), set({ adminAuthData: data  })) 
-      else if (renderRole === Roles.profesor) (navigate(RutasDeterminadas.profesor),set({ profesorAuthData: data }))
+      if (renderRole === Roles.administrador) return (navigate(RutasDeterminadas.admin), set({ adminAuthData: data  })) 
+      else if (renderRole === Roles.profesor) return (navigate(RutasDeterminadas.profesor),set({ profesorAuthData: data }))
       else null
     }
   },
   //Funcion para obtener los datos del use = admin | profesor
   async getUserProfile(uid) {
-    //referencia de la collecionProfesores
-    const dbProfes = collection(dbFire, "profesores");
-    //query consultara(filtrara) en path/profesor  y mostrara el doc coincidente
-    const q = query(dbProfes, where("uid", "==", uid));
-    //resultado del query
-    const queryData = await getDocs(q);
-    //Verificamos si hay docs
-    if (queryData.docs.length > 0) {
-      const queryFound = queryData.docs[0].data() as ProfeAuthData;
-      //Que me retorne la información obtenida del doct
-      return queryFound;
-    }
+   try {
+     //referencia de la collecionProfesores
+     const dbProfes = collection(dbFire, "profesores");
+     //query consultara(filtrara) en path/profesor  y mostrara el doc coincidente
+     const q = query(dbProfes, where("uid", "==", uid));
+     //resultado del query
+     const queryData = await getDocs(q);
+     //Verificamos si hay docs
+     if (queryData.docs.length > 0) {
+       const queryFound = queryData.docs[0].data() as ProfeAuthData;
+       //Que me retorne la información obtenida del doct
+       return queryFound;
+     }
+   } catch (error) {
+    console.log(error);    
+   }
   },
   //Funcion para ingresar al dashboard
   async loginUser(data: DataLogin, { resetForm }) {

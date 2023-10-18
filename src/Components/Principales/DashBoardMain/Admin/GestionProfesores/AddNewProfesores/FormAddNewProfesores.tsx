@@ -7,9 +7,7 @@ import UserNewProfesor from "./UserNewProfesor";
 import PanelAsignacionesNewProfesor from "./AddAsignacionesProfesores/PanelAsignacionesNewProfesor";
 
 const FormAddNewProfesores = () => {
-  const { createNewProfesor, btnDisabled } = stateRegisterNewProfesor();
-  {/* /ARREGALR EL BOTON, CUANDO SE EJECUTA,
-   EL BOTON DE BUSCAR CON DNI, SE ACTIVA EL BTNDISABLED ARREGLAR */}
+  const { createNewProfesor } = stateRegisterNewProfesor();
   return (
     <div className="flex w-full flex-wrap">
       <Formik
@@ -26,14 +24,12 @@ const FormAddNewProfesores = () => {
           </Form>
         )}
       </Formik>
-      <div className="flex-[0_1_100%] flex items-start mt-7 justify-center" >
-        <div className="flex-[0_1_55rem] min-h-[35rem] flex flex-col justify-between bg-blue-400/20 rounded-lg shadow-md">
+      {/* Esta fuera del formik, así que tengo que darle el fromik para validar */}
+      <div className="flex-[0_1_100%] flex items-start my-7 justify-center" >
+        <div className="border flex-[0_1_55rem] min-h-[35rem] flex flex-col justify-between bg-blue-400/20 rounded-lg shadow-xl p-3">
           {/* Panel para las asignacioens a cada profesores */}
-          <div className="flex-[0_1_10rem]">
+          <div className="flex-[0_1_100%]">
             <PanelAsignacionesNewProfesor />
-          </div>
-          <div className="flex-[0_1_2rem] flex justify-end pr-2 pb-2" >
-            <button disabled={btnDisabled} type="submit" className="shadow-md mb-2 mr-2 rounded-full flex-[0_1_12rem] min-h-[3rem] bg-[#66ffb3]" >Registrar Información</button>
           </div>
         </div>
       </div>

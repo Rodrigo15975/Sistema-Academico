@@ -1,7 +1,9 @@
 import { FaUserCheck } from "react-icons/fa";
 import PanelProfesores from "./PanelDeProfesores/PanelProfesores";
 import BusquedaDeProfesores from "./BusquedaDeProfesores";
+
 const GestionProfesores = () => {
+ 
   return (
     <div className="w-full flex flex-col" >
       <div>
@@ -9,7 +11,7 @@ const GestionProfesores = () => {
           <FaUserCheck />
         </p>
       </div>
-      <div className="p-4 bg-black/5" >
+      <div className="p-4 bg-panel bg-blue-500/10" >
         <div className="flex justify-between p-4 bg-white/90 rounded-xl" >
           <BusquedaDeProfesores />
         </div>

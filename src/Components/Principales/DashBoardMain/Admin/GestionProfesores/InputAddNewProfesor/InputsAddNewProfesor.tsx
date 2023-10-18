@@ -18,8 +18,7 @@ const InputsAddNewProfesor = ({
   ) => {
     if (touched[name] && errors[name]) return "form-field error";
     else if (touched[name] && !errors[name]) return "form-field value";
-    else return "form-field";
-  
+    else return "form-field";  
   };
 
   return (

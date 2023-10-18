@@ -15,6 +15,7 @@ interface LoadingAutentication {
   passwordIncorrect: boolean;
   profesorNotFound: boolean;
   accountDisable: boolean;
+  netWorkFailed: boolean
 }
 
 interface AuthLoginHome extends LoadingAutentication {

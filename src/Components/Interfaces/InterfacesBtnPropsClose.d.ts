@@ -1,0 +1,3 @@
+interface PropBtnClose {
+  clicked: () => void
+}

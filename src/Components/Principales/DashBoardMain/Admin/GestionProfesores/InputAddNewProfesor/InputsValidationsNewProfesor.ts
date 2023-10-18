@@ -31,6 +31,6 @@ export const inputsValidationsNewProfesor = yup.object().shape({
 export const inputValidationDni = yup.object().shape({
   dni: yup
     .string()
-    .matches(/^[0-9]{8}$/, 'DNI Inválido.')
+    .matches(/^[1-9][0-9]{7}$/, 'DNI Inválido.')
     .required('DNI requerido.'),
 });

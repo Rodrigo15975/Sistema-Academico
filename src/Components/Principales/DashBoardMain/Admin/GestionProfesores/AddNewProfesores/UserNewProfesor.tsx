@@ -25,7 +25,6 @@ const UserNewProfesor = ({ errors, fieldProps, touched }: PropsUserNewProfesor) 
           />
         </div>
       </div>
-
     </div>
   )
 }

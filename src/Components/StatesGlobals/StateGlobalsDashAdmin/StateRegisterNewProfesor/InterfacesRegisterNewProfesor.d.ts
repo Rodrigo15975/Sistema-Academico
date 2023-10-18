@@ -3,30 +3,47 @@ type DataDni = {
 };
 //Type, para el nuevo profesor, actualizar los datos
 
+interface AsignacionesDataProfesor {
+  asignacionesProfesor: {
+    curso: string;
+    dia: string;
+    grado: string;
+    horario: string;
+    seccion: string;
+  }[];
+}
+
 //obtención del valores(name) de los inputs, para actualizar los datos
 interface SetFieldValueFunction {
   (
     field: string,
-    value: string ,
+    value: string,
     shouldValidate?: boolean | undefined
   ): Promise<void | FormikErrors<initialValuesNewProfesor>> | null;
 }
 //Propiedades para Fields
 type PropsDataField = SetFieldValueFunction | undefined;
-
+//Propiedades para el registro del nuevo profesor
+type NewDataProferEmailPassword = {
+  apellidos: string;
+  dni: string;
+  emailNewProfesor: string;
+  name: string;
+  passwordNewProfesor: string;
+  role: string
+};
 //StatePrincipal
 interface VarianState {
   messageErrorFetchDNI: boolean;
   messageError: string;
-  registerDataNewProfesor: {
-    emailNewProfesor: string,
-    passwordNewProfesor: string,
-    name: string | undefined,
-    apellidos: string
-    dni: string | undefined
-  }
+  registerDataNewProfesor: NewDataProferEmailPassword;
   fieldsSet: PropsDataField;
-  btnDisabled: boolean
+  asignacionesProfesor: AsignacionesProfesor[];
+  btnDisable: boolean
+  dataCompleteProfesor:DataCompleteSendDb 
+  successProfesor: boolean,
+  profesorExisting: boolean,
+  loadignCreateProfesor: boolean,
 }
 //Interfas de funciones con statePrincipal
 interface StateNewProfesor extends VarianState {
@@ -34,9 +51,12 @@ interface StateNewProfesor extends VarianState {
     data: DataDni,
     helpers: { resetForm: () => void }
   ): Promise<void>;
-  createNewProfesor: () => void;
   getValuesFields: (setFields: PropsDataField) => void;
   closeModalMessageError: () => void;
-  buttonDisabled: ()=> void
-  prueba: ()=> void
+  onSubmitAddAsignaciones : (data:AsignacionesDataProfesor, helpers: { resetForm: () => void })=> void
+  createNewProfesor : ()=> void
+  updateBtnExitNeWProfesor: ()=> void
+  sendDataCompleteProfesor: ()=> Promise <void>
+  profesorExistingUpdate : ()=> void
+  successProfesorUpdate: ()=>void
 }

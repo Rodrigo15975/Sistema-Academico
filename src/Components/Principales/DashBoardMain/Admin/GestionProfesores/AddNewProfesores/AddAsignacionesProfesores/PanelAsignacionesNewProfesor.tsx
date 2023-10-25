@@ -82,7 +82,7 @@ const PanelAsignacionesNewProfesor = () => {
 
               </FieldArray>
               <div className="w-full flex justify-end p-2">
-                <button disabled={btnDisable} type="submit" className="flex-[0_1_15rem] h-[3rem] bg-[#80ffd2] rounded-md flex items-center justify-center gap-3" >
+                <button disabled={btnDisable} type="submit" className="flex-[0_1_15rem] h-[3rem] hover:border-2 hover:border-black transition bg-[#80ffd2] rounded-md flex items-center justify-center gap-3" >
                   Registrar información
                     <AiOutlineSave className="text-2xl"/>
                   </button>

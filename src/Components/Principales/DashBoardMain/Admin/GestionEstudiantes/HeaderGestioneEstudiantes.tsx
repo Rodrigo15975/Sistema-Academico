@@ -7,8 +7,6 @@ interface PropsHeaderGestionEstudiantes {
   cliCked: () => void
 }
 
-
-
 const HeaderGestioneEstudiantes = ({ icon, title,cliCked }: PropsHeaderGestionEstudiantes) => {
   return (
     <div className="shadow-md relative h-[6rem] p-6 flex items-center bg-titleDashboards">

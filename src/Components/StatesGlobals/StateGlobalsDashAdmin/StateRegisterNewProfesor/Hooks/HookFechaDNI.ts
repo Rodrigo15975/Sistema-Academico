@@ -13,9 +13,13 @@ export interface ResponseGetDataFetchDni {
 }
 
 export const getFetchDNI = async (DNI: string) => {
+  //Defecto
+  // const defaultUrlApi = `http://localhost:3000/dni?numero=${DNI}`;
   try {
-    const url = `http://localhost:3000/dni?numero=${DNI}`;
-    const { data } = await axios.get<ResponseGetDataFetchDni>(url);
+    //api levantando en onrender
+    const urlUpApi = `https://api-dni-sistema.onrender.com/dni?numero=${DNI}`
+    // const url = `http://localhost:3000/dni?numero=${DNI}`;
+    const { data } = await axios.get<ResponseGetDataFetchDni>(urlUpApi);
     return data;
   } catch (error) {
     if (error instanceof Error) {

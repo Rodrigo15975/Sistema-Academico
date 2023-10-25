@@ -1,3 +1,3 @@
-import { onSnapshot , getFirestore, collection, where, getDocs, query , addDoc, setDoc, deleteDoc, doc, } from "firebase/firestore";
+import { onSnapshot , getFirestore, collection, where, getDocs, query , addDoc, setDoc, deleteDoc, doc, updateDoc } from "firebase/firestore";
 const dbFire = getFirestore();
-export { onSnapshot , where, getDocs, query , dbFire, collection, addDoc, setDoc, deleteDoc,doc };
+export { onSnapshot , where, getDocs, query , dbFire, collection, addDoc, setDoc, deleteDoc,doc,updateDoc };

@@ -1,10 +1,7 @@
 import { create } from "zustand";
 import { ResponseGetDataFetchDni, getFetchDNI } from "./Hooks/HookFechaDNI";
 import { MessageErrorsFetchs } from "./Enums/MessageErrorsFetch";
-import {
-  generatorEmail,
-  generatorPassword,
-} from "./Hooks/GeneratorDatosNewProfesor";
+import {  generatorEmail,  generatorPassword,} from "./Hooks/GeneratorDatosNewProfesor";
 // import {  collection,  dbFire,  addDoc,} from "../../../../firebase/Config/firestore";
 import Roles from "../../../Enums/Roles";
 import { convertirAMayusculas } from "./Hooks/ConvertidorrMayuscula";

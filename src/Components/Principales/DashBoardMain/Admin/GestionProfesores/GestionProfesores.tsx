@@ -2,8 +2,7 @@ import { FaUserCheck } from "react-icons/fa";
 import PanelProfesores from "./PanelDeProfesores/PanelProfesores";
 import BusquedaDeProfesores from "./BusquedaDeProfesores";
 
-const GestionProfesores = () => {
- 
+const GestionProfesores = () => { 
   return (
     <div className="w-full flex flex-col" >
       <div>

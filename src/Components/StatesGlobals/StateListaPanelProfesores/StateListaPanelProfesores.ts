@@ -1,16 +1,27 @@
 import { create } from "zustand";
-import { getListaDataProfesores } from "./hooks/getListaDataProfesores";
-import { deletListaDataProfesor } from "./hooks/deleteListaDataProfesor";
+import { deletListaDataProfesor } from "./hooks/CrudFuntionsListaDataProfesor";
 const stateListaPanelProfesores = create<StateListaPanel>((set, get) => ({
   listaDeProfesoresDB: [],
+  listaDeProfesoresOriginal: [],
   loadingList: true,
   deleteIsTrue: false,
-  async getDataListProfesor() {
+  valueSearch: "",
+  changeValueSearch(e) {
+    const upValue = e.toLocaleUpperCase();
+    const { listaDeProfesoresOriginal } = get();
+    if (upValue !== "") {
+      const filteredProfesor = listaDeProfesoresOriginal.filter((profesor) =>
+        profesor.name.includes(upValue)
+      );
+      set({ listaDeProfesoresDB: filteredProfesor });
+    } else {
+      // Restaura la lista original
+      set({ listaDeProfesoresDB: listaDeProfesoresOriginal });
+    }
+  },
+  async getDataListProfesor(data: GetDataListaProfesores[]) {
     try {
-      const listaProfesores = await getListaDataProfesores();
-      //Probar con el console, por que no renderiza o cambia los datos 
-      // cuando elimino o lago arregalar
-      set({ listaDeProfesoresDB: listaProfesores });
+      set({ listaDeProfesoresDB: data, listaDeProfesoresOriginal: data });
     } catch (error) {
       console.log(error);
       if (error instanceof Error)

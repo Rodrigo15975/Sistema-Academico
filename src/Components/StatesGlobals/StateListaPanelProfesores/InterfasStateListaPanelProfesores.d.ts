@@ -15,20 +15,25 @@ type GetDataListaProfesores = {
   passwordNewProfesor?: string;
   role: string;
   uid: string;
-  idDoc: string,
+  idDoc: string;
 };
+
 interface PropsCardGetDataListaProfesores {
-  data: GetDataListaProfesores
+  data: GetDataListaProfesores;
 }
 //Main principal para las variants
 interface StateMainVariants {
   listaDeProfesoresDB: GetDataListaProfesores[];
-  loadingList: boolean
-  deleteIsTrue: boolean
+  listaDeProfesoresOriginal: GetDataListaProfesores[];
+  loadingList: boolean;
+  deleteIsTrue: boolean;
+  valueSearch: string;
 }
+
 //Main principal para las funciones
 interface StateListaPanel extends StateMainVariants {
-  getDataListProfesor: () => Promise<void>;
-  deleteListProfesor: (uid: string)=> Promise<void>
-  deleteIstrueUpdate: ()=> void
+  getDataListProfesor: (data: GetDataListaProfesores[]) => Promise<void>;
+  deleteListProfesor: (uid: string) => Promise<void>;
+  deleteIstrueUpdate: () => void;
+  changeValueSearch: (value: string) => void;
 }

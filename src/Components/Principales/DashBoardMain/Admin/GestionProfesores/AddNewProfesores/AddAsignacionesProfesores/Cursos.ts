@@ -1,14 +1,14 @@
 export const curso = {
   historia: "historia",
-  matematica: "matematica",
-  fisica: "fisica",
-  educacionF: "educacion física",
-  comunicacion: "comunicacion"
+  matematica: "matemática",
+  fisica: "física",
+  educacionF: "educación física",
+  comunicacion: "comunicación"
 }
 export const dia = {
   lunes :"lunes",
   martes :"martes",
-  miercoles: "miercoles",
+  miercoles: "miércoles",
   jueves :"jueves",
   viernes :"viernes"
 }

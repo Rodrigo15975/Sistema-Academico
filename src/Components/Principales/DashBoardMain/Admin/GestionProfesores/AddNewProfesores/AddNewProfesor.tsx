@@ -15,7 +15,7 @@ interface PropsClose {
 }
 const AddNewProfesor = ({ close, newProfesor }: PropsClose) => {
   const { closeModalMessageError, messageError, messageErrorFetchDNI, profesorExisting, profesorExistingUpdate, successProfesor, successProfesorUpdate, loadignCreateProfesor } = stateRegisterNewProfesor();
- 
+
   useEffect(() => {
     if (successProfesor) {
       const timeoutId = setTimeout(() => {
@@ -30,7 +30,7 @@ const AddNewProfesor = ({ close, newProfesor }: PropsClose) => {
       // Limpia el efecto cancelando el timeout si las dependencias cambian antes de que se ejecute el efecto programado
       return () => clearTimeout(timeoutId);
     }
- 
+
   }, [profesorExisting, profesorExistingUpdate, successProfesorUpdate, successProfesor]);
   return (
     <>

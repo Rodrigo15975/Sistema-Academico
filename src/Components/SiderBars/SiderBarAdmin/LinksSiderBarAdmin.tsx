@@ -4,7 +4,7 @@ import { RxDashboard } from "react-icons/rx";
 import { LiaUniversitySolid } from "react-icons/lia";
 import { HiOutlineUsers } from "react-icons/hi";
 import { SiGoogleclassroom } from "react-icons/si";
-import { GoReport } from "react-icons/go";
+// import { GoReport } from "react-icons/go";
 import { CgProfile } from "react-icons/cg";
 import React from "react";
 type DataRutas = {
@@ -36,27 +36,41 @@ const rutaProfesores: DataRutas[] = [
     icon: <HiOutlineUsers className="text-xl" />,
     className: "animate-fade animate-delay-300 animate-ease-linear"
   },
-  // {
-  //   id: "04",
-  //   path: "/dashboard/admin/gestionAuxiliares",
-  //   name: "Gestión Auxiliares",
-  //   icon: <HiOutlineUsers />,
-  //   className: "animate-fade animate-delay-[400ms] animate-ease-linear"
-  // },
+  {
+    id: "07",
+    path: "/dashboard/admin/add-cursos",
+    name: "Gestión de Cursos",
+    icon: <CgProfile className="text-xl" />,
+    className: "animate-fade animate-delay-[500ms] animate-ease-linear"
+  },
+  {
+    id: "87",
+    path: "/dashboard/admin/add-admin",
+    name: "Gestión de Admin",
+    icon: <CgProfile className="text-xl" />,
+    className: "animate-fade animate-delay-[500ms] animate-ease-linear"
+  },
   {
     id: "04",
+    path: "/dashboard/admin/lista-estudiantes",
+    name: "Lista de estudiantes",
+    icon: <HiOutlineUsers />,
+    className: "animate-fade animate-delay-[400ms] animate-ease-linear"
+  },
+  {
+    id: "05",
     path: "/dashboard/admin/institucion",
     name: "Institución",
     icon: <LiaUniversitySolid className="text-xl" />,
     className: "animate-fade animate-delay-[600ms] animate-ease-linear"
   },
-  {
-    id: "05",
-    path: "/dashboard/admin/reporte",
-    name: "Reporte",
-    icon: <GoReport className="text-xl" />,
-    className: "animate-fade animate-delay-[700ms] animate-ease-linear"
-  },
+  // {
+  //   id: "05",
+  //   path: "/dashboard/admin/reporte",
+  //   name: "Reporte",
+  //   icon: <GoReport className="text-xl" />,
+  //   className: "animate-fade animate-delay-[700ms] animate-ease-linear"
+  // },
   {
     id: "06",
     path: "/dashboard/admin/perfil",
@@ -64,6 +78,7 @@ const rutaProfesores: DataRutas[] = [
     icon: <CgProfile className="text-xl" />,
     className: "animate-fade animate-delay-[500ms] animate-ease-linear"
   },
+  
 ]
 
 const LinksSiderBarAdmin = () => {

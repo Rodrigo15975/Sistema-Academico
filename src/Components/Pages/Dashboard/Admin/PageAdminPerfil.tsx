@@ -1,4 +1,4 @@
-import Perfiles from "../../../Principales/DashBoardMain/Perfiles"
+import Perfiles from "../../../Principales/DashBoardMain/Perfil/Perfiles"
 export const PageAdminPerfil = () => {
   return (
     <>

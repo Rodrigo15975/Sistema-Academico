@@ -6,4 +6,4 @@ export { PageInstitucionAdmin as PageInstitucionAdmin } from "./PageInstitucionA
 export { PageGestionProfesores as PageGestionProfesores } from "./PageGestionProfesores";
 export { PageReporte as PageReporte } from "./PageReporte";
 export { PageMatriculas as PageMatriculas } from "./PageMatriculas";
-export { PageGestionAuxiliares as PageGestionAuxiliares } from "./PageGestionAuxiliares";
+export { PageAddNewCursos as PageAddNewCursos} from "./PageAddNewCursos";

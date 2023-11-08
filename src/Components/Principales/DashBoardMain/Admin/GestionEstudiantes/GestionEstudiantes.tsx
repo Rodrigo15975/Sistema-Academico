@@ -54,9 +54,10 @@ const GestionEstudiantes = () => {
         </ModalTemplateGestiones>
       }
       {matriculados &&
-        <ModalTemplateGestiones>
+        <aside className="fixed inset-0 flex items-center animate-fade-down animate-once animate-duration-1000 animate-ease-in-out px-4 justify-center z-50 backdrop-blur-sm bg-white/20">
           <Matriculados clicked={openMatriculados} />
-        </ModalTemplateGestiones>}
+        </aside>
+      }
     </>
   )
 }

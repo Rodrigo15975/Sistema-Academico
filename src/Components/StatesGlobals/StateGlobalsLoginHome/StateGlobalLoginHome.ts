@@ -1,9 +1,24 @@
 import { create } from "zustand";
 import DataLogin from "../../Interfaces/InterfacesLoginHome";
 import { AuthLoginHome, ProfeAuthData } from "./InterfaceStateGlobalLoginHome";
-import {  auth,  onAuthStateChanged,  signInWithEmailAndPassword,  signOut,} from "../../../firebase/Config/auth";
-import {  collection,  dbFire,  getDocs,  query,  where,} from "../../../firebase/Config/firestore";
-import {  disableAcount,  errorPassword,  profesorNotFound,} from "../../Principales/HomeLogin/Hooks/LoginErrors/FunctionsErrosLogin";
+import {
+  auth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "../../../firebase/Config/auth";
+import {
+  collection,
+  dbFire,
+  getDocs,
+  query,
+  where,
+} from "../../../firebase/Config/firestore";
+import {
+  disableAcount,
+  errorPassword,
+  profesorNotFound,
+} from "../../Principales/HomeLogin/Hooks/LoginErrors/FunctionsErrosLogin";
 import { renderNavigateRole } from "./HooksRenderNavigate";
 import Roles from "../../Enums/Roles";
 import RutasDeterminadas from "../../Enums/RutasDeterminadas";
@@ -15,6 +30,7 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
   accountDisable: false,
   profesorNotFound: false,
   netWorkFailed: false,
+  uid: "",
   //lo inicializo en una funcion, navigateFuncion, es una funcion
   navigate: () => {},
   isAuthLoading: true,
@@ -26,6 +42,7 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
       try {
         if (user) {
           const { uid } = user;
+          set({ uid });
           const dataUser = await getUserProfile(uid);
           renderPage(dataUser);
           unsubscribe();
@@ -43,29 +60,33 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
     if (data) {
       const { role } = data;
       const renderRole = renderNavigateRole({ navigate, role });
-      if (renderRole === Roles.administrador) return (navigate(RutasDeterminadas.admin), set({ adminAuthData: data  })) 
-      else if (renderRole === Roles.profesor) return (navigate(RutasDeterminadas.profesor),set({ profesorAuthData: data }))
-      else null
+      if (renderRole === Roles.administrador)
+        return navigate(RutasDeterminadas.admin), set({ adminAuthData: data });
+      else if (renderRole === Roles.profesor)
+        return (
+          navigate(RutasDeterminadas.profesor), set({ profesorAuthData: data })
+        );
+      else null;
     }
   },
   //Funcion para obtener los datos del use = admin | profesor
   async getUserProfile(uid) {
-   try {
-     //referencia de la collecionProfesores
-     const dbProfes = collection(dbFire, "profesores");
-     //query consultara(filtrara) en path/profesor  y mostrara el doc coincidente
-     const q = query(dbProfes, where("uid", "==", uid));
-     //resultado del query
-     const queryData = await getDocs(q);
-     //Verificamos si hay docs
-     if (queryData.docs.length > 0) {
-       const queryFound = queryData.docs[0].data() as ProfeAuthData;
-       //Que me retorne la información obtenida del doct
-       return queryFound;
-     }
-   } catch (error) {
-    console.log(error);    
-   }
+    try {
+      //referencia de la collecionProfesores
+      const dbProfes = collection(dbFire, "profesores");
+      //query consultara(filtrara) en path/profesor  y mostrara el doc coincidente
+      const q = query(dbProfes, where("uid", "==", uid));
+      //resultado del query
+      const queryData = await getDocs(q);
+      //Verificamos si hay docs
+      if (queryData.docs.length > 0) {
+        const queryFound = queryData.docs[0].data() as ProfeAuthData;
+        //Que me retorne la información obtenida del doct
+        return queryFound;
+      }
+    } catch (error) {
+      console.log(error);
+    }
   },
   //Funcion para ingresar al dashboard
   async loginUser(data: DataLogin, { resetForm }) {

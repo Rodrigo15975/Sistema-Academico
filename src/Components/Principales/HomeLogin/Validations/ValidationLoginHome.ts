@@ -1,10 +1,10 @@
 import { yup } from "../../../ImportsDeterminadas/ImportsDeterminadas";
 //EMAIL
 // debe comenzar con uno o mas caracteres alfabeticos
-//  (mayusculas o minusculas), 
+//  (mayusculas o minusculas),
 // digitos (0-9), o ciertos caracteres especiales como ".", "_", "%", "+", o "-".
 // luego, debe contener el símbolo "@".
-// despues del simbolo "@", puede contener uno o mas caracteres alfaebticos, digitos o ciertos caracteres 
+// despues del simbolo "@", puede contener uno o mas caracteres alfaebticos, digitos o ciertos caracteres
 // especiales, seguidos por un punto ".".
 // al final, debe tener al menos dos caracteres alfabeticos después del ultimo punto ".".
 //PASSWORD
@@ -21,10 +21,10 @@ export const LoginValidationSchema = yup.object().shape({
     )
     .required("El correo electrónico es obligatorio"),
   password: yup
-    .string()
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d{1,10}).{6,}$/,
-      "Ingrese correctamente su contraseña"
-    )
-    .required("La contraseña es obligatoria"),
+  .string()
+  .matches(
+    /^(?=.*[a-zA-Z])(?=.*\d).+$/,
+    "La contraseña debe contener al menos una letra y un número"
+  )
+  .required("La contraseña es obligatoria")
 });

@@ -4,8 +4,9 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
-  createUserWithEmailAndPassword,  
+  createUserWithEmailAndPassword,
+  reauthenticateWithCredential
 } from "firebase/auth";
 const auth = getAuth(app);
 const secondaryAuth = getAuth(app);
-export { auth, onAuthStateChanged, signInWithEmailAndPassword, signOut, secondaryAuth, createUserWithEmailAndPassword};
+export { auth, onAuthStateChanged, reauthenticateWithCredential,signInWithEmailAndPassword, signOut, secondaryAuth, createUserWithEmailAndPassword };

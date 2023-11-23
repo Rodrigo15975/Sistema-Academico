@@ -1,6 +1,7 @@
 //Interfaces para todo, sin cursop, con curso, nuevo y repetite
 type NewStudent = {
   dni: string;
+  idDoc?: string;
   apellidos: string;
   nombres: string;
   fechaNacimiento: string;

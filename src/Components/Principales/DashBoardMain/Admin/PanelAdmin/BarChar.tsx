@@ -3,6 +3,7 @@ import { Chart as ChartJS, LineController, LineElement, PointElement, LinearScal
 
 ChartJS.register(LineController, LineElement, PointElement, LinearScale, CategoryScale , Title);
 
+//Funciona correctamente 
 const BarChart = () => {
   // Datos para el gráfico de barras
   const chartData = {

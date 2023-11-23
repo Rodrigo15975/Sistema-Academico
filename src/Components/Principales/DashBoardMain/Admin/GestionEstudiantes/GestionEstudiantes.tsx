@@ -32,7 +32,6 @@ const GestionEstudiantes = () => {
   //matriculados registro
   const openMatriculados = () => setMatriculados(!matriculados)
 
-
   return (
     <>
       <div className="w-full flex flex-col" >

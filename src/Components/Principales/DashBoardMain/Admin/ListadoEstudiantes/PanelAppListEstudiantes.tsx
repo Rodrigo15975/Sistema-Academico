@@ -4,7 +4,7 @@ import { dbFire, onSnapshot, query, collection } from "../../../../../firebase/C
 import ListStudentMatriculados from "../GestionEstudiantes/Matriculados/ListStudentMatriculados";
 
 const PanelAppListEstudiantes = () => {
-  const { searchDni, searchSelect, getDB_ListEstudiantes, DB_ListEstudiantes, searchMatriculados } = stateListadoEstudiantes();
+  const { searchDni, searchSelect, getDB_ListEstudiantes, DB_ListEstudiantes, searchGradue, selectSection, valueSection, searchMatriculados } = stateListadoEstudiantes();
   const [filteredEstudiantes, setFilteredEstudiantes] = useState<GetDBMatriculados[]>([]);
 
   useEffect(() => {
@@ -16,22 +16,26 @@ const PanelAppListEstudiantes = () => {
     return () => unsubscribe()
   }, [getDB_ListEstudiantes]);
 
+
   useEffect(() => {
     const filteredEstudiantes = DB_ListEstudiantes.filter((estudiante) => {
       const dniMatch = estudiante.dni.includes(searchDni);
       const categoriaMatch = searchSelect === '' || estudiante.categoria === searchSelect;
-      // searchMatriculados contiene una cadena como
-      //  "true" o "false", y JSON.parse la convierte en un valor booleano
-      //  (true o false). Esto permite compararla con estudiante.alumnoMatriculado, que parece ser un valor booleano.
       const matriculadosMatch = searchMatriculados === '' || estudiante.alumnoMatriculado === JSON.parse(searchMatriculados);
-      return dniMatch && categoriaMatch && matriculadosMatch;
+      const gradoMatch = searchGradue === '' || estudiante.grado === searchGradue;
+
+      // Ajusta la lógica para manejar el filtro de sección
+      const sectionMatch = searchGradue === '' || selectSection === '' || (estudiante.grado === searchGradue && estudiante.seccion === valueSection);
+
+      return dniMatch && categoriaMatch && matriculadosMatch && gradoMatch && sectionMatch;
     });
 
     setFilteredEstudiantes(filteredEstudiantes);
-  }, [DB_ListEstudiantes, searchDni, searchSelect, searchMatriculados]);
+  }, [DB_ListEstudiantes, searchDni, searchSelect, searchMatriculados, searchGradue, selectSection, valueSection]);
+
 
   return (
-    <div className="flex justify-center gap-4 my-4">
+    <div className="flex justify-center flex-wrap gap-4 my-4">
       {filteredEstudiantes.map(data => <ListStudentMatriculados key={data.idDoc} data={data} />)}
     </div>
   );

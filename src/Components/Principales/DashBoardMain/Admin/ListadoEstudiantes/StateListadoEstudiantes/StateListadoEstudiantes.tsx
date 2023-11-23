@@ -5,6 +5,15 @@ const stateListadoEstudiantes = create<MainStateListadoEstudiantes>((set) => ({
   searchDni: "",
   DB_ListEstudiantes: [],
   searchMatriculados: "",
+  searchGradue: "",
+  selectSection: "",
+  valueSection: "A",
+  onChangeSection(value) {
+    set({ selectSection: value })
+  },
+  onChangeValueSection(value) {
+    set({ valueSection: value })
+  },
   onChangeMatriculados(value) {
     set({ searchMatriculados: value })
   },
@@ -18,6 +27,9 @@ const stateListadoEstudiantes = create<MainStateListadoEstudiantes>((set) => ({
   },
   onChangeSelect(value) {
     set({ searchSelect: value })
+  },
+  onChangeGradeValue(value) {
+    set({ searchGradue: value })
   },
 }))
 

@@ -9,6 +9,7 @@ import {
   collection,
 } from "../../../../../../../firebase/Config/firestore";
 import verifyCategory from "../FormNuevo/StateNuevo/Hooks/HookVerifyCategoryAll";
+import { updateStudent } from "../FormNuevo/StateNuevo/Hooks/FunctionsNewStudentCrud";
 
 const stateConcurso = create<StateMainConcurso>((set, get) => ({
   studentConcurso: {
@@ -26,11 +27,30 @@ const stateConcurso = create<StateMainConcurso>((set, get) => ({
   },
   buttonDisableConcurso: true,
   studentNotFoundConcurso: false,
-  async onSubmitNewStudent(data, helper) {
-    const { dni } = data;
+  studentIsMatriculadoConcurso: false,
+  successMatriculadoConcurso: false,
+  studentIsMatriculadoUpdateConcurso() {
+    set({ studentIsMatriculadoConcurso: false });
+  },
+  studentMatriculadoSuccesUpdateConcurso() {
+    set({ successMatriculadoConcurso: false });
+  },
+  async onSubmitNewStudent(_, helper) {
+    const { studentConcurso } = get();
+    const { idDoc, alumnoMatriculado, dni } = studentConcurso;
     try {
-      console.log();
-      helper();
+      if (alumnoMatriculado)
+        return set({ studentIsMatriculadoConcurso: true }), helper();
+      else {
+        const newDataUpdate = {
+          ...studentConcurso,
+          alumnoMatriculado: true,
+        };
+        await updateStudent(idDoc ?? "", newDataUpdate);
+        set({ successMatriculadoConcurso: true });
+        helper();
+        return;
+      }
     } catch (error) {
       console.log(`Error al obtener al estudiante: ${error}, ${dni} `);
     }
@@ -44,23 +64,33 @@ const stateConcurso = create<StateMainConcurso>((set, get) => ({
       if (querySnapshot.size === 1) {
         const doc = querySnapshot.docs[0];
         const data = doc.data() as NewStudent;
-        const { categoria, nombres, apellidos, fechaNacimiento, seccion, sexo, telefono, grado } = data;
+        const {
+          categoria,
+          nombres,
+          apellidos,
+          fechaNacimiento,
+          seccion,
+          sexo,
+          telefono,
+          grado,
+        } = data;
         const categoryConCurso = verifyCategory(
           categoria,
           MatriculaOptions.concurso
         );
+        set({ studentConcurso: data });
         if (categoryConCurso) {
-          setValuesInputs("nombres", nombres)
-          setValuesInputs("apellidos", apellidos)
-          setValuesInputs("fechaNacimiento", fechaNacimiento)
-          setValuesInputs("sexo", sexo)
-          setValuesInputs("telefono", telefono)
-          setValuesInputs("grado", grado)
-          setValuesInputs("seccion", seccion)
-          return
+          setValuesInputs("nombres", nombres);
+          setValuesInputs("apellidos", apellidos);
+          setValuesInputs("fechaNacimiento", fechaNacimiento);
+          setValuesInputs("sexo", sexo);
+          setValuesInputs("telefono", telefono);
+          setValuesInputs("grado", grado);
+          setValuesInputs("seccion", seccion);
+          return;
         }
       }
-      return set({ studentNotFoundConcurso: true })
+      return set({ studentNotFoundConcurso: true });
     } catch (error) {
       console.log(`Error al obtener datos ${error}} del estudiante ${dni}`);
     }

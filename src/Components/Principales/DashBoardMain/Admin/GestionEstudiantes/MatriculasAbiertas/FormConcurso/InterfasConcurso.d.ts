@@ -8,9 +8,13 @@ interface StateFunctionsStudent {
   getValueDni: (dni: string, setValuesInputs: UpdateInputs) => void;
   studentUpdateNotFoundConcurso: () => void;
   updateNormalBtnDisable: () => void;
+  studentIsMatriculadoUpdateConcurso: () => void;
+  studentMatriculadoSuccesUpdateConcurso: () => void;
 }
 interface StateMainConcurso extends StateFunctionsStudent {
   studentConcurso: StudentConcurso;
   buttonDisableConcurso: boolean;
+  studentIsMatriculadoConcurso: boolean;
+  successMatriculadoConcurso: boolean;
   studentNotFoundConcurso: boolean;
 }

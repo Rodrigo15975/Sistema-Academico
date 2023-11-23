@@ -8,6 +8,7 @@ import {
 } from "../../../../../../../firebase/Config/firestore";
 import verifyCategory from "../FormNuevo/StateNuevo/Hooks/HookVerifyCategoryAll";
 import MatriculaOptions from "../../../../../../Enums/MatriculaOptions";
+import { updateStudent } from "../FormNuevo/StateNuevo/Hooks/FunctionsNewStudentCrud";
 export function validateDNI(dni: string) {
   // Verificar si el DNI tiene exactamente 8 dígitos, no es igual a "00000000",
   // y no contiene caracteres no numéricos
@@ -27,13 +28,37 @@ const stateRepitente = create<MainStateRepitente>((set, get) => ({
     nombres: "",
     seccion: "",
     sexo: "",
+    idDoc: "",
     telefono: "",
-    alumnoMatriculado: false,
+    alumnoMatriculado: null,
+  },
+  studentIsMatriculado: false,
+  successMatriculado: false,
+  studentMatriculadoSuccesUpdate() {
+    set({ successMatriculado: false });
+  },
+  studentIsMatriculadoUpdate() {
+    set({ studentIsMatriculado: false });
   },
   buttonDisableRepitente: true,
   studentNotFound: false,
-  onSubmitStudentRepitente: (data) => {
-    console.log(data);
+  onSubmitStudentRepitente: async (data, resetForm) => {
+    const { newStudentRepitente } = get();
+    const { idDoc } = data;
+    const { alumnoMatriculado } = newStudentRepitente;
+
+    if (alumnoMatriculado)
+      return set({ studentIsMatriculado: true }), resetForm();
+    else {
+      const newDataUpdate = {
+        ...data,
+        alumnoMatriculado: true,
+      };
+      await updateStudent(idDoc ?? "", newDataUpdate);
+      set({ successMatriculado: true });
+      resetForm();
+      return;
+    }
   },
   async getDataForDni(dni, updateInputs) {
     const { updateBtnDisableRepitente } = get();
@@ -44,15 +69,33 @@ const stateRepitente = create<MainStateRepitente>((set, get) => ({
       const querySnapshot = await getDocs(q);
       if (querySnapshot.size === 1) {
         const doc = querySnapshot.docs[0];
-        const matchingStudent = doc.data() as NewStudent;
-        const { apellidos, fechaNacimiento, nombres, seccion, sexo, grado, telefono, categoria } = matchingStudent;
+        const matchingStudent = {
+          ...doc.data(),
+          idDoc: doc.id,
+        } as NewStudentRepitente;
+        const {
+          apellidos,
+          fechaNacimiento,
+          nombres,
+          seccion,
+          sexo,
+          grado,
+          telefono,
+          categoria,
+          idDoc,
+          fechaMatriculado,
+        } = matchingStudent;
+
         const categoryRepitente = verifyCategory(
           categoria,
           MatriculaOptions.repitente
         );
+        set({ newStudentRepitente: matchingStudent });
         if (categoryRepitente) {
           updateInputs("apellidos", apellidos);
           updateInputs("fechaNacimiento", fechaNacimiento);
+          updateInputs("fechaMatriculado", fechaMatriculado);
+          updateInputs("idDoc", idDoc ?? "");
           updateInputs("nombres", nombres);
           updateInputs("seccion", seccion);
           updateInputs("sexo", sexo);

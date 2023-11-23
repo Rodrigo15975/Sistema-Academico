@@ -4,9 +4,11 @@ interface FunctionsRepitente {
     helperFormik: () => void
   ) => void;
   updateBtnDisableRepitente: () => void;
-  getDataForDni: (dni: string, setValues: UpdateInputs) => Promise <void>;
-  studentUpdateNotFound: ()=> void
-  updateNormalBtnDisable: ()=> void
+  getDataForDni: (dni: string, setValues: UpdateInputs) => Promise<void>;
+  studentUpdateNotFound: () => void;
+  updateNormalBtnDisable: () => void;
+  studentIsMatriculadoUpdate: () => void;
+  studentMatriculadoSuccesUpdate: () => void;
 }
 
 //Se le pasa sin una nombre de la propiedad, directamente, para acceder al valor
@@ -19,9 +21,25 @@ interface UpdateInputs {
   ): Promise<void | FormikErrors<NewStudent>>;
 }
 
+interface NewStudentRepitente {
+  apellidos: string;
+  categoria: string;
+  dni: string;
+  fechaMatriculado: string;
+  fechaNacimiento: string;
+  grado: string;
+  nombres: string;
+  seccion: string;
+  sexo: string;
+  idDoc: string;
+  telefono: string;
+  alumnoMatriculado: boolean | null;
+}
+
 interface MainStateRepitente extends FunctionsRepitente {
-  newStudentRepitente: NewStudent;
+  newStudentRepitente: NewStudentRepitente;
   buttonDisableRepitente: boolean;
-  studentNotFound: boolean
-  
+  studentNotFound: boolean;
+  studentIsMatriculado: boolean;
+  successMatriculado: boolean;
 }

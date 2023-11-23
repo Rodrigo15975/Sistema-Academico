@@ -4,6 +4,7 @@ import { yup } from "../../../../../../ImportsDeterminadas/ImportsDeterminadas";
 const initialValueNewStudentRepitente: NewStudent = {
   apellidos: "",
   dni: "",
+  idDoc: "",
   nombres: "",
   fechaNacimiento: "",
   sexo: "",
@@ -12,7 +13,7 @@ const initialValueNewStudentRepitente: NewStudent = {
   fechaMatriculado: "",
   seccion: "",
   categoria: MatriculaOptions.repitente,
-  alumnoMatriculado: false
+  alumnoMatriculado: false,
 };
 
 const validationSchemaNewStudentRepitente = yup.object().shape({

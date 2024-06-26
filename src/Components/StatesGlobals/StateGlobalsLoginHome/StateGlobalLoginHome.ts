@@ -24,8 +24,14 @@ import Roles from "../../Enums/Roles";
 import RutasDeterminadas from "../../Enums/RutasDeterminadas";
 const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
   profesorAuthData: null,
-  adminAuthData: null,
-  validationCredentials: false,
+  adminAuthData: {
+    email: "asd",
+    name: "asd",
+    role: "asd",
+    uid: "asd",
+    urlPhoto: "asd",
+  },
+  validationCredentials: true,
   passwordIncorrect: false,
   accountDisable: false,
   profesorNotFound: false,
@@ -33,10 +39,10 @@ const stateAuthLogin = create<AuthLoginHome>((set, get) => ({
   uid: "",
   //lo inicializo en una funcion, navigateFuncion, es una funcion
   navigate: () => {},
-  isAuthLoading: true,
+  isAuthLoading: false,
   //funcion para verificar y mantener el auth
   authUser() {
-    set({ isAuthLoading: true });
+    set({ isAuthLoading: false });
     const { getUserProfile, renderPage } = get();
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       try {

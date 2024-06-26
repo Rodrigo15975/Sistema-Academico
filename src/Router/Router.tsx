@@ -19,12 +19,12 @@ const Router = () => {
       {/* Page Principal */}
       <Route path="/" element={<PageHome />} />
       {/*Profesores  */}
-      <Route path="/dashboard-profesor" element={profesorAuthData ? <LayoutProfesor><PageDashBoardProfesor /></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
+      <Route path="/dashboard-profesor" element={<LayoutProfesor><PageDashBoardProfesor /></LayoutProfesor> } />
       <Route path="/dashboard/profesor/institucion" element={profesorAuthData ? <LayoutProfesor><PageInstitucionProfesor /></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
       <Route path="/dashboard/profesor/perfil" element={profesorAuthData ? <LayoutProfesor><PagePerfilProfesor /></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
       <Route path="/dashboard/profesor/aulas" element={profesorAuthData ? <LayoutProfesor> <PageAulasProfesor /></LayoutProfesor> : <Navigate to={"/"} replace={true} />} />
       {/*Admins  */}
-      <Route path="/dashboard-admin" element={adminAuthData ? <LayoutAdmin> <PageDashBoardAdmin /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
+      <Route path="/dashboard-admin" element={ <LayoutAdmin> <PageDashBoardAdmin /></LayoutAdmin> } />
       <Route path="/dashboard/admin/perfil" element={adminAuthData ? <LayoutAdmin> <PageAdminPerfil /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
       <Route path="/dashboard/admin/institucion" element={adminAuthData ? <LayoutAdmin><PageInstitucionAdmin /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />
       <Route path="/dashboard/admin/gestionEstudiantes" element={adminAuthData ? <LayoutAdmin> <PageGestionEstudiantes /></LayoutAdmin> : <Navigate to={"/"} replace={true} />} />

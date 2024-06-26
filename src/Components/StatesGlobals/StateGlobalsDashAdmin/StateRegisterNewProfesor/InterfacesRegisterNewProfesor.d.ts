@@ -23,6 +23,8 @@ interface SetFieldValueFunction {
 }
 //Propiedades para Fields
 type PropsDataField = SetFieldValueFunction | undefined;
+
+
 //Propiedades para el registro del nuevo profesor
 type NewDataProferEmailPassword = {
   apellidos: string;
